@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IndexViewModel
+
+
+@*This is getting the team name for to be displayed at top of list when team is selected*@
+@foreach (var x in Model.Teams)
+{
+<h3>@x.TeamName</h3>
+}
+
+@*Displaying the table of bowlers*@
+<table class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>First Name</th>
+            <th>Middle Initial</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.Bowlers)
+        {
+        <tr>
+            <td>@x.BowlerFirstName</td>
+            <td>@x.BowlerMiddleInit</td>
+            <td>@x.BowlerLastName</td>
+            <td>@x.BowlerAddress</td>
+            <td>@x.BowlerCity</td>
+            <td>@x.BowlerState</td>
+            <td>@x.BowlerZip</td>
+            <td>@x.BowlerPhoneNumber</td>
+        </tr>
+        }
+    </tbody>
+</table>
+@*This is pulling from the paginationtaghelper and created the pagination for the pages*@
+<div class="pull-right" 
+     page-classes-enabled="true"
+     page-class="btn"
+     page-class-normal="btn-outline-secondary"
+     page-class-selected="btn-primary"
+     page-info="@Model.PageNumberingInfo"></div>

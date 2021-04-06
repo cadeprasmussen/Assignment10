@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Team>
+
+@*Making it so the home button will go back to the first page of the List of bowlers*@
+<a class="btn btn-outline-primary m-1 col-12" 
+   asp-action="Index" 
+   asp-controller="Home" 
+   asp-route-teamid="" 
+   asp-route-pagenum="">Home</a>
+<br />
+
+@foreach (var x in Model)
+{
+    //Adding the different teams to for a filter bar, and making it so the selected team is highlighted
+    <a class="btn btn-outline-primary m-1 col-12 @(x.TeamName == ViewBag.SelectedTeam ? "btn-primary" : "btn-outline-primary")" 
+       asp-action="Index" 
+       asp-controller="Home"
+       asp-route-teamid="@x.TeamId"
+       asp-route-teamName="@x.TeamName">@x.TeamName</a>
+       <br />
+}
